@@ -75,7 +75,23 @@ class Payout
                 // If the response is not a valid JSON, print it as-is
                 Console.WriteLine(responseString);
             }
-
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"HTTP Request Error: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                    Console.WriteLine($"Inner Exception Type: {ex.InnerException.GetType().Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                }
+            }
             Console.WriteLine();
             Console.WriteLine($"Response Status Code: {response.StatusCode}");
 
