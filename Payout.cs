@@ -23,7 +23,7 @@ class Payout
 
         string merchantId = "3832456837996201334";
         string merchantSiteId = "184063";
-        string clientRequestId = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+        string clientRequestId = new Random().Next(3000000, 4000000).ToString();
         string amount = "100";
         string currency = "USD";
         // Use SHA256 to calculate the checksum. See the class below.
@@ -35,14 +35,14 @@ class Payout
             merchantSiteId,
             clientRequestId,
             userTokenId,
-            clientUniqueId = DateTime.UtcNow.ToString("yyyyMMddHHmmss") + userTokenId,
+            clientUniqueId = clientRequestId,
             amount,
             currency,
             timeStamp,
             // Get from PaymentIQ's (DevCode's) Transfer API response
             // in TradeNetworks.Live.CreditCardDepositCommunicationLogs
             // Add serviceMapping to PIQ's Transfer API response
-            userPaymentOption = new { userPaymentOptionId = "363202111" },
+            userPaymentOption = new { userPaymentOptionId = "363202111r" },
             deviceDetails = new { ipAddress = GetLocalIPAddress() },
             checksum,
             userDetails = new
