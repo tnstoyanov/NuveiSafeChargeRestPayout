@@ -44,7 +44,11 @@ class Payout
             // Add serviceMapping to PIQ's Transfer API response
             userPaymentOption = new { userPaymentOptionId = "363202111" },
             deviceDetails = new { ipAddress = GetLocalIPAddress() },
-            checksum
+            checksum,
+            userDetails = new
+            {
+            birthdate = DateTime.UtcNow.AddYears(-30).ToString("yyyy-MM-dd") // Example: 30 years ago from today
+            }
         };
 
         // The JSON body is ready. Now, send the request to the endpoint.
