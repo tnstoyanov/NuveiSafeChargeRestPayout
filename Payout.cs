@@ -19,10 +19,11 @@ class Payout
         // Add serviceMapping to PIQ's Transfer API response
         int userTokenId = 11848420;
         string timeStamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+        // Nuvei's API creds, constants, get them from Nuvei's Merchant Portal
         string merchantSecretKey = "puT8KQYqIbbQDHN5cQNAlYyuDedZxRYjA9WmEsKq1wrIPhxQqOx77Ep1uOA7sUde";
-
         string merchantId = "3832456837996201334";
         string merchantSiteId = "184063";
+        // End of Nuvei's API creds
         string clientRequestId = new Random().Next(3000000, 4000000).ToString();
         string amount = "100";
         string currency = "USD";
@@ -42,7 +43,7 @@ class Payout
             // Get from PaymentIQ's (DevCode's) Transfer API response
             // in TradeNetworks.Live.CreditCardDepositCommunicationLogs
             // Add serviceMapping to PIQ's Transfer API response
-            userPaymentOption = new { userPaymentOptionId = "363202111r" },
+            userPaymentOption = new { userPaymentOptionId = "363202111" },
             deviceDetails = new { ipAddress = GetLocalIPAddress() },
             checksum,
             userDetails = new
